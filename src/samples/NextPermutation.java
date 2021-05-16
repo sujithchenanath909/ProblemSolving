@@ -1,46 +1,103 @@
 package samples;
 
+import java.util.ArrayList;
+
 //Java program to implement
 //the next_permutation method
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NextPermutation {
 
 	// Function to swap the data
 	// present in the left and right indices
-	public static int[] swap(int data[], int left, int right)
+	public static ArrayList<Integer>  swap(ArrayList<Integer> data, int left, int right)
 	{
 
 		// Swap the data
-		int temp = data[left];
-		data[left] = data[right];
-		data[right] = temp;
-
-		// Return the updated array
+		int temp = data.get(left);
+		data.set(left,data.get(right));
+		data.set(right, temp);
+		// Return the updated list
 		return data;
 	}
 
 	// Function to reverse the sub-array
 	// starting from left to the right
 	// both inclusive
-	public static int[] reverse(int data[], int left, int right)
+	public static  ArrayList<Integer> reverse( ArrayList<Integer> data, int left, int right)
 	{
 
 		// Reverse the sub-array
 		while (left < right) {
-			int temp = data[left];
-			data[left++] = data[right];
-			data[right--] = temp;
+			int temp = data.get(left);
+			data.set(left++,data.get(right));
+			data.set(right--, temp);
+			
 		}
 
-		// Return the updated array
+		// Return the updated list
 		return data;
 	}
 
+	
+	 public static ArrayList<Integer> nextPermutation(ArrayList<Integer> A) {
+
+	       
+	        
+	    if (A.size() <= 1)
+				{
+			Collections.sort(A);
+			return A;}
+//
+			int last = A.size() - 2;
+
+			// find the longest non-increasing suffix
+			// and find the pivot
+			while (last >= 0) {
+				if (A.get(last) < A.get(last+1)) {
+					break;
+				}
+				last--;
+			}
+
+			// If there is no increasing pair
+			// there is no higher order permutation
+			if (last < 0) {
+				Collections.sort(A);
+				return A;}
+			
+
+			int nextGreater = A.size() - 1;
+
+			// Find the rightmost successor to the pivot
+			for (int i = A.size()  - 1; i > last; i--) {
+				if (A.get(i) > A.get(last)) {
+					nextGreater = i;
+					break;
+				}
+			}
+
+			// Swap the successor and the pivot
+	
+			A = swap(A, nextGreater, last);
+
+			// Reverse the suffix
+			A = reverse(A, last + 1,A.size()  - 1);
+			
+			// Return true as the next_permutation is done
+			return A;
+	        
+	        
+	        
+	    }
 	// Function to find the next permutation
 	// of the given integer array
-	public static boolean findNextPermutation(int data[])
+/*	public static boolean findNextPermutation(int data[])
 	{
 
 		// If the given dataset is empty
@@ -83,18 +140,20 @@ public class NextPermutation {
 
 		// Return true as the next_permutation is done
 		return true;
-	}
+	}*/
 
 	// Driver Code
 	public static void main(String args[])
 	{
 		int data[] = { 1, 2, 3 };
-		if (!findNextPermutation(data))
-			System.out.println("There is no higher"
-							+ " order permutation "
-							+ "for the given data.");
-		else {
-			System.out.println(Arrays.toString(data));
-		}
+		ArrayList<Integer> a=new ArrayList<Integer>();
+		a.add(769);
+		a.add(533);
+		
+		
+		ArrayList<Integer> sol=nextPermutation(a);
+	
+			System.out.println(sol.toString());
+		
 	}
 }
