@@ -1,0 +1,5 @@
+1.) When a loop is incrementing by multiples(Or dividing) then it will be having complexity of logn
+	ex:for(i=1;i<n;i=i*2))
+	Example for nlogn
+	for(i=0;i<n;i++)
+		for(j=0;j<n;j=j*2)
