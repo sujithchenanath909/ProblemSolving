@@ -49,7 +49,7 @@ public class DeleteDuplicates {
 			head = head.next;
 		}
 	}
-	Node removeDuplicates(Node head)
+	static Node removeDuplicates(Node head)
     {
         if(head==null || head.next==null)
             return head;
@@ -81,7 +81,7 @@ public class DeleteDuplicates {
 		add(8);
 		print();
 		System.out.println("**");
-		deleteDuplicates();
+		removeDuplicates(head);
 		print();
 	}
 
