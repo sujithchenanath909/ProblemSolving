@@ -7,9 +7,9 @@ public class SwapVariables {
 	
 	public void swap() {
 		
-		a=b-a;
-		b=b-a;
-		a=a+b;
+		a=b-a;//1
+		b=b-a;//2
+		a=a+b;//3
 		
 	}
 	
