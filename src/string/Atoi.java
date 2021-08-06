@@ -1,9 +1,11 @@
 package string;
 
+//convert a given string to integer
 public class Atoi{
 
+	
 
-public int atoi(final String A) {
+public static int atoi(final String A) {
         int i = 0, length = A.length();
 		long num = 0;
 		boolean sign = true;
@@ -39,6 +41,9 @@ public int atoi(final String A) {
 
 public static void main(String[] args){
 
+	String s="12345";
+	int n=atoi(s);
+	System.out.println(n);
 
 }
 
