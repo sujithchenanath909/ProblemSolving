@@ -7,11 +7,11 @@ public class Jumps {
 	
 	public static boolean status(int[] array) {
 		
-		int length=array.length-1;
+		int length=array.length-1; //4 
 		for(int i=length;i>=0;i--) {
 			
-			if(length -i <=array[i])
-				length=i;
+			if(length -i <=array[i]) //i=2 0<4 l=4
+				length=i;//1
 			
 		}
 		
